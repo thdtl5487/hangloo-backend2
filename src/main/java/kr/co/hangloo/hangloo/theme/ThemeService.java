@@ -54,7 +54,7 @@ public class ThemeService {
 		
 		Optional<ThemeVO> oVO = repo.findById(num);
 		ThemeVO themeVO = oVO.get();
-		String fileName = themeVO.getTheme_main_img();
+		String fileName = themeVO.getThemeMainImg();
 		File file = new File(FILE_PATH + fileName);
 		
 		try {
@@ -76,7 +76,7 @@ public class ThemeService {
 		
 		Optional<ThemeVO> oVO = repo.findById(num);
 		ThemeVO themeVO = oVO.get();
-		String fileName = themeVO.getTheme_sub_img();
+		String fileName = themeVO.getThemeSubImg();
 		File file = new File(FILE_PATH + fileName);
 		
 		try {

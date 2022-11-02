@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:action="@{/admin/themeUpload}" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="name">
+                <span>테마 이름 : </span>
+                <input type="text" class="form-control" id="themeName" name="themeName" placeholder="테마 이름 입력">
+            </div>
+            <div>
+                <span>테마 메인 이미지 선택 : </span>
+                <input type="file" class="form-control" id="mainImg" name="mainImg">
+            </div>
+            <div>
+                <span>테마 서브 이미지 선택 : </span>
+                <input type="file" class="form-control" id="subImg" name="subImg">
+            </div>
+            <div>
+                <span>테마 가격 : </span>
+                <input type="text" class="form-control" id="themePrice" name="themePrice" placeholder="테마 가격 입력">
+            </div>
+        </div>
+        <button type="submit">테마 등록</button>
+    </form>
+    <script>
+
+    </script>
+</body>
+</html>

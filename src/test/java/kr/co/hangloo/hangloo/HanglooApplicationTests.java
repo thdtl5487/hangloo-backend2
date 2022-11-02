@@ -9,17 +9,19 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import kr.co.hangloo.hangloo.thema.ThemaRepository;
 import kr.co.hangloo.hangloo.thema.ThemaVO;
+import kr.co.hangloo.hangloo.theme.ThemeRepository;
+import kr.co.hangloo.hangloo.theme.ThemeVO;
 
 @SpringBootTest
 class HanglooApplicationTests {
 
 	@Autowired
-	private ThemaRepository themaRepo;
+	private ThemeRepository themeRepo;
 	
 	@Test
 	void selectTest() {
 		
-		List<ThemaVO> voList = this.themaRepo.findAll();
+		List<ThemeVO> voList = this.themeRepo.findAll();
 		System.out.println("voList : " + voList.get(0));
 		if(voList == null) {
 			System.out.println("데이터 안들어왔음");
@@ -27,8 +29,8 @@ class HanglooApplicationTests {
 		for(int i = 0; i<voList.size(); i++) {
 			System.out.println("list : " + voList.get(i));
 			System.out.println(i + "번째 데이터 : ");
-			System.out.println(voList.get(i).getThemaMainImg());
-			System.out.println(voList.get(i).getThemaName());
+			System.out.println(voList.get(i).getTheme_main_img());
+			System.out.println(voList.get(i).getTheme_name());
 			System.out.println("---------------------------");
 		}
 	}
@@ -36,10 +38,10 @@ class HanglooApplicationTests {
 	@Test
 	void selectOne() {
 		
-		Optional<ThemaVO> oVO = this.themaRepo.findById(1);
-		ThemaVO vo = oVO.get();
+		Optional<ThemeVO> oVO = this.themeRepo.findById(1);
+		ThemeVO vo = oVO.get();
 		
-		System.out.println(vo.getThemaMainImg());
+		System.out.println(vo.getTheme_main_img());
 		
 		
 		

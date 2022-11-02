@@ -18,16 +18,19 @@ public class ThemeVO {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer theme_num;
+	@Column(name= "theme_num")
+	private Integer themeNum;
 	
-	@Column(length = 300)
-	private String theme_main_img;
+	@Column(name="theme_main_img", length = 300)
+	private String themeMainImg;
 	
-	@Column(length = 30)
-	private String theme_name;
+	@Column(name="theme_name", length = 30)
+	private String themeName;
 	
-	private Integer theme_price;
+	@Column(name="theme_price")
+	private Integer themePrice;
 	
-	private String theme_sub_img;
+	@Column(name="theme_sub_img")
+	private String themeSubImg;
 	
 }
