@@ -35,10 +35,11 @@
 					<td><img class="sub-img" src="" alt="테마번호들어가는곳"></td>
 					<td th:text="${theme.themePrice}"></td>
 					<td><button class="modify-btn" th:attr="data-el_id=${theme.themeNum}">수정</button></td>
-					<td><button>삭제</button></td>
+					<td><button class="remove-btn" th:attr="data-el_id=${theme.themeNum}">삭제</button></td>
 				</tr>
 			</table>
 		</div>
+		<button><a href="/admin/theme">업로드로 이동</a></button>
 	</div>
 <script
   src="https://code.jquery.com/jquery-3.6.0.js"
@@ -46,19 +47,35 @@
   crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script>
+	// 삭제버튼 기능 스크립트
 	$(document).ready(function(){
-		$(".modify-btn").on("click", function(){
-			console.log("모디파이 버튼 눌렀음");
+		$(".remove-btn").on("click", function(){
+			console.log("삭제 버튼 눌렀음");
 			console.log(this.getAttribute("data-el_id"));
+			var themeId = this.getAttribute("data-el_id");
 			
+			$.ajax({
+				url:'/admin/removeTheme',
+				type:'POST',
+				data:{
+					themeNum: themeId
+				},
+				success:function(data){
+					alert("테마가 삭제되었습니다.");
+					location.reload();
+				}
+			})
 		})
 	})
 	</script>
+	
+	
 	<script>
+		// 메인/서브 이미지를 출력하기 위한 스크립트
 		var themeNumList = document.querySelectorAll(".theme-num-text");
 		var mainImgEle = document.querySelectorAll(".main-img");
 		var subImgEle = document.querySelectorAll(".sub-img");
-
+		
 		for(var i = 0; i<=themeNumList.length; i++){
 			mainImgEle[i].setAttribute("src", "http://localhost:9091/getThemeImg/" + themeNumList[i].innerText);
 			subImgEle[i].setAttribute("src", "http://localhost:9091/getThemeSubImg/" + themeNumList[i].innerText);

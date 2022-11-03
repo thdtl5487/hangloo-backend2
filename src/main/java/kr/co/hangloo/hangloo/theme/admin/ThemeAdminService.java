@@ -58,4 +58,8 @@ public class ThemeAdminService {
 		return result;
 	}
 	
+	
+	public void removeTheme(Integer themeId) {
+		repo.deleteById(themeId);
+	}
 }

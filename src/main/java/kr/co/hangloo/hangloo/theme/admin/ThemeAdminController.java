@@ -52,10 +52,13 @@ public class ThemeAdminController {
 		return "/admin/ThemeList";
 	}
 	
-	@GetMapping("/removeTheme/{id}")
-	public String removeTheme(Integer themaNum) {
+	@PostMapping("/removeTheme")
+	public String removeTheme(ThemeVO themeVO) {
+		System.out.println("삭제 메소드 실행" + themeVO.getThemeNum());
 		
-		return null;
+		adminService.removeTheme(themeVO.getThemeNum());
+		
+		return "/admin/ThemeList";
 	}
 	
 }
