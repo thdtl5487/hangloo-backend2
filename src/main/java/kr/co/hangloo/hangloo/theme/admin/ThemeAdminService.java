@@ -1,6 +1,7 @@
 package kr.co.hangloo.hangloo.theme.admin;
 
 import java.io.File;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,6 +49,13 @@ public class ThemeAdminService {
 	public void saveThemeImage(MultipartFile mainImg, MultipartFile subImg) throws Exception{
 		mainImg.transferTo(new File(FILE_PATH + mainImg.getOriginalFilename()));
 		subImg.transferTo(new File(FILE_PATH + subImg.getOriginalFilename()));
+	}
+	
+	public List<ThemeVO> selectAll(){
+		
+		List<ThemeVO> result = repo.findAll();
+		
+		return result;
 	}
 	
 }
