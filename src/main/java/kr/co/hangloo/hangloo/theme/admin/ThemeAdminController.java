@@ -1,6 +1,7 @@
 package kr.co.hangloo.hangloo.theme.admin;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,10 +54,10 @@ public class ThemeAdminController {
 	}
 	
 	@PostMapping("/removeTheme")
-	public String removeTheme(ThemeVO themeVO) {
+	public String removeTheme(ThemeVO themeVO) throws IOException {
 		System.out.println("삭제 메소드 실행" + themeVO.getThemeNum());
 		
-		adminService.removeTheme(themeVO.getThemeNum());
+		adminService.removeTheme(themeVO);
 		
 		return "/admin/ThemeList";
 	}

@@ -1,7 +1,12 @@
 package kr.co.hangloo.hangloo.theme.admin;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,7 +64,18 @@ public class ThemeAdminService {
 	}
 	
 	
-	public void removeTheme(Integer themeId) {
-		repo.deleteById(themeId);
+	public void removeTheme(ThemeVO themeVO) throws IOException {
+		
+		Optional<ThemeVO> oVO = repo.findById(themeVO.getThemeNum());
+		themeVO = oVO.get();
+				
+		Path mainImg = Paths.get(FILE_PATH + themeVO.getThemeMainImg());
+		Path subImg = Paths.get(FILE_PATH + themeVO.getThemeSubImg());
+		System.out.println("mainImg : " + mainImg);
+		
+		Files.delete(mainImg);
+		Files.delete(subImg);
+		
+		repo.deleteById(themeVO.getThemeNum());
 	}
 }
