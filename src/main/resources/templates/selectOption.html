@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"><!-- 타임리프 -->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport">
+<title>Insert title here</title>
+<!-- 부트스트랩 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<style type="text/css">
+	a{ text-decoration: none; color: #000;}
+	a:hover {color: #EC6757;}
+	h3 { text-align: center; }
+	main { position: relative; width: 100%;}
+	p { display: inline;  margin: 0 30px;}
+	form { /* border: 1px solid #d0d0d0; */ padding: 50px 20px 80px 15px; }
+	#picWrap, #formWrap {width: 50%;}
+	#formWrap { position: absolute; top: 50px; right: 50px; }
+	#pic { padding: 100px 150px 100px 100px; }
+	p.deliveryFee span { margin-left: 40px; }
+	p.expectedFee { border-top: 1px solid #e0e0e0; display: block; padding-top: 20px;}
+	p.price { display: block; text-align: right; font-size: 20px; color: #EC6757; }
+	/* 유저아이디 안보이게 하기 */
+	#userNumInput {display: none; }
+	
+	div.nextBtnWrap {position: relative;}
+	button.nextBtn {position: absolute; top: 20px; right: 10px; background: #EC6757; border-color: #EC6757;  }
+	#themeWrap::before { content: ''; width:80%; border-bottom: 1px solid #f0f0f0; display: block; margin: 0 auto; }
+	#themeWrap {position: absolute; top:950px; left: 0; padding:0 50px;}
+	#theme { padding-top:100px; }
+	
+	.btn-primary { --bs-btn-active-bg: #EC6757; --bs-btn-active-border-color: #EC6757; }
+	.btn-outline-primary { color : #EC6757; border-color: #EC6757; --bs-btn-color: #EC6757; --bs-btn-border-color: #EC6757;}
+	.btn-check:checked+.btn {background-color: #EC6757; border-color: #EC6757;}
+	.btn:hover { border-color: #FFD0D0; background-color: #FFD0D0; color: #000;}
+	.btn-outline-primary:hover {border-color: #EC6757;}
+    
+</style>
+<body>
+	<main>
+	
+		<h3>STEP 4. 옵션을 선택하세요.</h3>
+		<!-- 예시사진영역 -->
+		<div id="picWrap">
+		   <div id="pic">
+			<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+			  <div class="carousel-inner">
+			    <div class="carousel-item active">
+			      <img src="/img/예(1).jpg" class="d-block w-100" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="/img/예(2).jpg" class="d-block w-100" alt="...">
+			    </div>
+			    <div class="carousel-item">
+			      <img src="/img/예(3).jpg" class="d-block w-100" alt="...">
+			    </div>
+			  </div>
+			   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			    <span class="visually-hidden">Previous</span>
+			  </button>
+			  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			    <span class="visually-hidden">Next</span>
+			  </button>
+			 </div>
+		  </div>
+		</div>
+	
+		<!-- form태그 영역 -->
+		<div id="formWrap">
+		
+			<form action="/SelectBookOption" method="post" name="selectOptionForm" onsubmit="checkForm(); return false;">
+				<div>
+					<p>테&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;마&nbsp;</p>
+					<input type="radio" class="btn-check" id="thema_num" autocomplete="off" value="1" name="thema_num" checked>
+					<label class="btn btn-outline-primary" for="thema_num">귀여운테마</label>
+					<!-- <input type="radio" class="btn-check" id="thema_num2" autocomplete="off" value="2" name="thema_num" >
+					<label class="btn btn-outline-primary" for="thema_num2">귀여운테마2</label> -->
+					<br><br>
+				</div>
+				<p>사&nbsp;이&nbsp;즈&nbsp;</p>
+				<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+				  <input type="radio" class="btn-check" name="photobook_size" value="8*8" id="photobook_size1" autocomplete="off" checked>
+				  <label class="btn btn-outline-primary" for="photobook_size1">8*8</label>
+				
+				  <input type="radio" class="btn-check" name="photobook_size" value="10*10" id="photobook_size2" autocomplete="off">
+				  <label class="btn btn-outline-primary" for="photobook_size2">10*10</label>
+				
+				  <input type="radio" class="btn-check" name="photobook_size" value="가로형A4" id="photobook_size3" autocomplete="off">
+				  <label class="btn btn-outline-primary" for="photobook_size3">가로형A4</label>
+				  
+				  <input type="radio" class="btn-check" name="photobook_size" value="가로형B4" id="photobook_size4" autocomplete="off">
+				  <label class="btn btn-outline-primary" for="photobook_size4">가로형B4</label>
+				
+				  <input type="radio" class="btn-check" name="photobook_size" value="세로형A4" id="photobook_size5" autocomplete="off">
+				  <label class="btn btn-outline-primary" for="photobook_size5">세로형A4</label>
+				  
+				  <input type="radio" class="btn-check" name="photobook_size" value="세로형B4" id="photobook_size6" autocomplete="off">
+				  <label class="btn btn-outline-primary" for="photobook_size6">세로형B4</label>
+				</div><br><br>
+				<p>커&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;버&nbsp;</p>
+				<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+				  <input type="radio" class="btn-check" name="photobook_cover" value="하드커버" id="photobook_cover1" autocomplete="off" checked>
+				  <label class="btn btn-outline-primary" for="photobook_cover1">하드커버</label>
+				
+				  <input type="radio" class="btn-check" name="photobook_cover" value="소프트커버" id="photobook_cover2" autocomplete="off">
+				  <label class="btn btn-outline-primary" for="photobook_cover2">소프트커버</label>
+				
+				  <input type="radio" class="btn-check" name="photobook_cover" value="레더커버" id="photobook_cover3" autocomplete="off">
+				  <label class="btn btn-outline-primary" for="photobook_cover3">레더커버</label>
+				</div><br><br>
+				<p>커버코팅</p>
+				<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+				  <input type="radio" class="btn-check" name="photobook_coting" value="무광" id="photobook_coting1" autocomplete="off" checked>
+				  <label class="btn btn-outline-primary" for="photobook_coting1">무광</label>
+				
+				  <input type="radio" class="btn-check" name="photobook_coting" value="유광" id="photobook_coting2" autocomplete="off">
+				  <label class="btn btn-outline-primary" for="photobook_coting2">유광</label>
+				</div><br><br>
+				<p>내&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;지&nbsp;</p>
+				<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+				  <input type="radio" class="btn-check" name="photobook_inside" value="무광지" id="photobook_inside1" autocomplete="off" checked>
+				  <label class="btn btn-outline-primary" for="photobook_inside1">무광지</label>
+				
+				  <input type="radio" class="btn-check" name="photobook_inside" value="유광지" id="photobook_inside2" autocomplete="off">
+				  <label class="btn btn-outline-primary" for="photobook_inside2">유광지</label>
+				
+				  <input type="radio" class="btn-check" name="photobook_inside" value="레이플렛전용지" id="photobook_inside3" autocomplete="off">
+				  <label class="btn btn-outline-primary" for="photobook_inside3">레이플렛전용지</label>
+				</div><br><br>
+				<p>케&nbsp;이&nbsp;스&nbsp;</p>
+				<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+				  <input type="radio" class="btn-check" name="photobook_case" value="선택" id="photobook_case1" autocomplete="off" checked>
+				  <label class="btn btn-outline-primary" for="photobook_case1">선택</label>
+				
+				  <input type="radio" class="btn-check" name="photobook_case" value="선택안함" id="photobook_case2" autocomplete="off">
+				  <label class="btn btn-outline-primary" for="photobook_case2">선택안함</label>
+				</div><br><br>
+				<div class="input-group mb-3">
+				  <p>수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;량&nbsp;</p>
+				  <input type="text" class="form-control" placeholder="수량을 입력하세요" name="photobook_quantity" aria-label="수량" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group mb-3">
+				  <p>페&nbsp;이&nbsp;지&nbsp;</p>
+				  <input type="text" class="form-control" placeholder="페이지수를 입력하세요" aria-label="페이지" aria-describedby="basic-addon1" name="photobook_page">
+				</div>
+				<p class="deliveryFee">배&nbsp;송&nbsp;비&nbsp;<span>3000원</span></p>
+				<!-- 숨겨진 영역 -->
+				<div id="userNumInput" class="input-group mb-3">
+				 <p>사&nbsp;용&nbsp;자&nbsp;</p>
+				  <div class="form-floating">
+				    <input type="text" class="form-control" id="user_num" name="user_num" placeholder="사용자"  value="나나나" th:value="${param.user}">
+				    <label for="user_num">사용자</label>
+				  </div>
+				</div>
+				<br><br>
+				<!-- 가격표시 -->
+				<p class="expectedFee">예상가격</p>
+				<p class="price"><span>0</span>원</p>
+				<!-- 버튼 -->
+				<div class="col-12 nextBtnWrap">
+			    	<button type="submit" class="btn btn-primary nextBtn">다음</button>
+			 	</div>
+			</form>
+			
+		
+		</div>
+		<!-- 테마선택 영역 -->
+		<div id="themeWrap">
+			<div id="theme">
+				<div id="themeList" class="row row-cols-1 row-cols-md-4 g-4">
+				  <div class="col" th:each="thema, stat:${thema}">
+				  	<a class="class" href="javascript:void(0);" onclick="themeChange(this.className);" th:class="${thema.thema_num}">
+					    <div class="card h-100">
+					      <img src="/img/예(1).jpg" th:src="|/img/${thema.thema_main_img}.jpg|" class="card-img-top" alt="...">
+					      <div class="card-body">
+					        <h5 class="card-title" th:text="${thema.thema_name}">귀여운테마</h5>
+					      </div>
+					    </div>
+				    </a>
+				  </div>
+				  
+				  
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<script type="text/javascript">
+		/* 빈값체크 */
+		function checkForm(){
+			let soForm = document.selectOptionForm;
+			
+			if( !soForm.photobook_quantity.value ){
+				alert('수량을 입력하세요');
+				soForm.photobook_quantity.focus();
+				return false;
+			}else if( !soForm.photobook_page.value ){
+				alert('페이지수를 입력하세요');
+				soForm.photobook_page.focus();
+				return false;
+			}
+			soForm.submit();
+		}
+		
+		
+	
+	</script>
+	<script th:inline="javascript">
+	/* 테마 수에 따라 id themeList의 클래스 숫자 교체해서 모양바꿔주기(5개 이상되면 새롭게 만들어줘야 할듯) */
+		let thema = [[${thema}]];
+		let length = thema.length;
+		
+		let themeList = document.getElementById('themeList');
+		
+		window.onload = function(){
+			/* themeList.classList.remove("row-cols-md-4");
+			themeList.classList.add("row-cols-md-"+length); */
+			themeList.classList.replace('row-cols-md-4','row-cols-md-'+length);
+		} 
+		
+		
+		/* 테마리스트 클릭하면 테마 value값 바꾸기 */
+		function themeChange(clicked_class){
+			let themeNum = document.getElementById('thema_num');
+			let themeValue = themeNum.value;
+			
+			for(let i= 0; i< length; i++){
+				if( clicked_class == thema[i].thema_num ){
+					themeNum.value = i+1;
+					themeNum.innerHTML() = "귀여운";
+				}
+			}
+			
+			/* 테마리스트 클릭하면 테마이름 변경 */
+			console.log(themeValue);
+			console.log(thema[0].thema_num);
+			
+			console.log(clicked_class);
+			
+			
+			
+		}
+	
+	</script>
+	
+ <!-- 부트스트랩 -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+</body>
+</html>
