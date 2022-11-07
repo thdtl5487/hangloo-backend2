@@ -3,6 +3,7 @@ package kr.co.hangloo.hangloo.selectBookOption.dto;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,11 +13,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+
+import kr.co.hangloo.hangloo.theme.ThemeVO;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity @Getter @Setter
+@Table(name = "Photobook")
 public class Photobook {
 	
 	@Id
@@ -24,9 +30,9 @@ public class Photobook {
 	@SequenceGenerator(name = "mySequenceGenerator", sequenceName = "photobook_seq", allocationSize = 1)
 	private int photobook_num;
 	
-	@OneToOne
-	@JoinColumn(name = "thema_num")
-	private Thema thema;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Theme_num")
+	private ThemeVO theme;
 //	private int thema_num;
 	
 	// 테마바꾸기

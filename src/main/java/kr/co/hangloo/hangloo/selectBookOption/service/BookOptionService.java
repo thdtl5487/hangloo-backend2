@@ -8,14 +8,19 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
 import kr.co.hangloo.hangloo.selectBookOption.dto.Photobook;
-import kr.co.hangloo.hangloo.selectBookOption.dto.Thema;
 import kr.co.hangloo.hangloo.selectBookOption.repository.BookOptionRepository;
+import kr.co.hangloo.hangloo.theme.ThemeRepository;
+import kr.co.hangloo.hangloo.theme.ThemeVO;
 
 @Service
 @Transactional
 public class BookOptionService {
 	
 	BookOptionRepository bookOptionRepository;
+	
+	@Autowired
+	ThemeRepository themerepo;
+	
 	
 	@Autowired
 	public BookOptionService(BookOptionRepository bookOptionRepository) {
@@ -30,8 +35,8 @@ public class BookOptionService {
 		return photobook.getPhotobook_num();
 	}
 	// 테마리스트 받아오기
-	public List<Thema> findThemaList(){
-		return bookOptionRepository.themaList();
+	public List<ThemeVO> findthemeList(){
+		return bookOptionRepository.themeList();
 	}
 	
 }

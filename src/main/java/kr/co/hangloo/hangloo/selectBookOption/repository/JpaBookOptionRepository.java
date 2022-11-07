@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.co.hangloo.hangloo.selectBookOption.dto.Photobook;
 import kr.co.hangloo.hangloo.selectBookOption.dto.Thema;
+import kr.co.hangloo.hangloo.theme.ThemeVO;
 
 @Repository
 public class JpaBookOptionRepository implements BookOptionRepository{
@@ -33,9 +34,9 @@ public class JpaBookOptionRepository implements BookOptionRepository{
 
 	// 모든 테마 가져오기
 	@Override
-	public List<Thema> themaList() {
+	public List<ThemeVO> themeList() {
 			
-		return em.createQuery("select t from Thema t", Thema.class).getResultList();
+		return em.createQuery("select t from Theme t", ThemeVO.class).getResultList();
 	}
 	
 	
