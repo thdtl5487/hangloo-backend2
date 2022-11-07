@@ -34,7 +34,28 @@
 	.btn:hover { border-color: #FFD0D0; background-color: #FFD0D0; color: #000;}
 	.btn-outline-primary:hover {border-color: #EC6757;}
 	
+	/* 사이즈부분 모양 */
+	.size-group { margin-left: 40px; }
+	.display-block-p { display: block; }
+	.pageSize {margin-right: 10px; }
+	.size1 { width: 45px; height: 45px;}
+	.size2 { width: 60px; height: 60px;}
+	.size3 { width: 95px; height: 65px;}
+	.size4 { width: 105px; height: 75px;}
+	.size5 { width: 74px; height: 95px;}
+	.size6 { width: 80px; height: 105px;}
+	.size-padding-top1 {padding-top: 60px; }
+	.size-padding-top2 {padding-top: 45px; }
+	.size-padding-top3 {padding-top: 40px; }
+	.size-padding-top4 {padding-top: 30px; }
+	.size-padding-top5 {padding-top: 10px; }
 	
+	/* 수량 */
+	.quantity-width { width: 280px; }
+	#result { text-align: center; }
+	.minus, .plus { width: 30px; line-height: 30px; text-align: center; border: 1px solid #FFD0D0; background-color: #FFD0D0; }
+	.minus { margin-right: 10px;}
+	.minus:hover, .plus:hover { color: #000; }
 </style>
 <body>
 	<main>
@@ -75,29 +96,34 @@
 					<p>테&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;마&nbsp;</p>
 					<input type="radio" class="btn-check" id="thema_num" autocomplete="off" value="1" name="thema_num" checked>
 					<label id="tName" class="btn btn-outline-primary" for="thema_num">귀여운테마</label>
-					<!-- <input type="radio" class="btn-check" id="thema_num2" autocomplete="off" value="2" name="thema_num" >
-					<label class="btn btn-outline-primary" for="thema_num2">귀여운테마2</label> -->
 					<br><br>
 				</div>
-				<p>사&nbsp;이&nbsp;즈&nbsp;</p>
-				<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-				  <input type="radio" class="btn-check" name="photobook_size" value="8*8" id="photobook_size1" autocomplete="off" checked>
-				  <label class="btn btn-outline-primary" for="photobook_size1">8*8</label>
-				
-				  <input type="radio" class="btn-check" name="photobook_size" value="10*10" id="photobook_size2" autocomplete="off">
-				  <label class="btn btn-outline-primary" for="photobook_size2">10*10</label>
-				
-				  <input type="radio" class="btn-check" name="photobook_size" value="가로형A4" id="photobook_size3" autocomplete="off">
-				  <label class="btn btn-outline-primary" for="photobook_size3">가로형A4</label>
-				  
-				  <input type="radio" class="btn-check" name="photobook_size" value="가로형B4" id="photobook_size4" autocomplete="off">
-				  <label class="btn btn-outline-primary" for="photobook_size4">가로형B4</label>
-				
-				  <input type="radio" class="btn-check" name="photobook_size" value="세로형A4" id="photobook_size5" autocomplete="off">
-				  <label class="btn btn-outline-primary" for="photobook_size5">세로형A4</label>
-				  
-				  <input type="radio" class="btn-check" name="photobook_size" value="세로형B4" id="photobook_size6" autocomplete="off">
-				  <label class="btn btn-outline-primary" for="photobook_size6">세로형B4</label>
+				<p class="display-block-p">사&nbsp;이&nbsp;즈&nbsp;</p>
+				<div class="btn-group size-group" role="group" aria-label="Basic radio toggle button group">
+					<div class="pageSize size-padding-top1">
+					  <input type="radio" class="btn-check" name="photobook_size" value="8*8" id="photobook_size1" autocomplete="off" checked>
+					  <label class="btn btn-outline-primary size1" for="photobook_size1">8x8</label>
+					</div>
+					<div class="pageSize size-padding-top2">
+					  <input type="radio" class="btn-check" name="photobook_size" value="10*10" id="photobook_size2" autocomplete="off">
+					  <label class="btn btn-outline-primary size2" for="photobook_size2">10x10</label>
+					</div>
+					<div class="pageSize size-padding-top3">
+					  <input type="radio" class="btn-check" name="photobook_size" value="가로형A4" id="photobook_size3" autocomplete="off">
+					  <label class="btn btn-outline-primary size3" for="photobook_size3">가로형A4</label>
+				  	</div>
+				  	<div class="pageSize size-padding-top4">
+					  <input type="radio" class="btn-check" name="photobook_size" value="가로형B4" id="photobook_size4" autocomplete="off">
+					  <label class="btn btn-outline-primary size4" for="photobook_size4">가로형B4</label>
+					</div>
+					<div class="pageSize size-padding-top5">
+					  <input type="radio" class="btn-check" name="photobook_size" value="세로형A4" id="photobook_size5" autocomplete="off">
+					  <label class="btn btn-outline-primary size5" for="photobook_size5">세로형A4</label>
+				  	</div>
+				  	<div>
+					  <input type="radio" class="btn-check" name="photobook_size" value="세로형B4" id="photobook_size6" autocomplete="off">
+					  <label class="btn btn-outline-primary size6" for="photobook_size6">세로형B4</label>
+				  	</div>
 				</div><br><br>
 				<p>커&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;버&nbsp;</p>
 				<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
@@ -139,13 +165,19 @@
 				  
 				 
 				</div><br><br>
-				<div class="input-group mb-3">
+				<!-- <div class="input-group mb-3">
 				  <p>수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;량&nbsp;</p>
 				  <input type="text" class="form-control" placeholder="수량을 입력하세요" name="photobook_quantity" aria-label="수량" aria-describedby="basic-addon1">
+				</div> -->
+				<div class="input-group mb-3 quantity-width">
+				  <p>수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;량&nbsp;</p>
+				  <a href="javascript:void(0);" class="minus">-</a>
+				  <input id="result" type="text" onkeypress="inNumber();" onfocusout="inputVal()" class="form-control" name="photobook_quantity" aria-label="수량" aria-describedby="basic-addon1" >
+				  <a href="javascript:void(0);" class="plus" style="margin-left: 10px;">+</a>
 				</div>
 				<div class="input-group mb-3">
 				  <p>페&nbsp;이&nbsp;지&nbsp;</p>
-				  <input type="text" class="form-control" placeholder="페이지수를 입력하세요" aria-label="페이지" aria-describedby="basic-addon1" name="photobook_page">
+				  <input type="text" onkeypress="inNumber();" class="form-control" placeholder="페이지수를 입력하세요" aria-label="페이지" aria-describedby="basic-addon1" name="photobook_page">
 				</div>
 				<p class="deliveryFee">배&nbsp;송&nbsp;비&nbsp;<span>3000원</span></p>
 				<!-- 숨겨진 영역 -->
@@ -194,7 +226,7 @@
 		function checkForm(){
 			let soForm = document.selectOptionForm;
 			
-			if( !soForm.photobook_quantity.value ){
+			if( soForm.photobook_quantity.value == 0 ){
 				alert('수량을 입력하세요');
 				soForm.photobook_quantity.focus();
 				return false;
@@ -206,8 +238,50 @@
 			soForm.submit();
 		}
 		
-
+		/* 숫자체크 */
+		function inNumber(){
+			if(event.keyCode<48 || event.keyCode>57){
+				event.returnValue = false;
+			}
+		}
 		
+		/* 수량 value */
+		function inputVal(){
+			let inputVal = document.getElementById('result').value;
+			
+			console.log(inputVal);
+		}
+		/* 수량 버튼 */
+		
+		let plus = document.querySelector(".plus");
+		let minus = document.querySelector(".minus");
+		let result = document.querySelector("#result");
+		
+		let i = document.getElementById('result').value;
+		
+		plus.addEventListener("click", () => {
+			i++
+			result.value = i;
+			console.log(i);
+			console.log(result.value);
+			let a = number(result.value);
+			console.log(i+a);
+			
+		})
+		
+		minus.addEventListener("click", () => {
+			if(i>1){
+				i--
+				result.value = i;
+				console.log(i);
+				console.log(result.value);
+			}else {
+				result.value = 1;
+				console.log(i);
+			}
+		})
+		
+	
 		
 		
 	</script>
@@ -222,6 +296,8 @@
 			/* themeList.classList.remove("row-cols-md-4");
 			themeList.classList.add("row-cols-md-"+length); */
 			themeList.classList.replace('row-cols-md-4','row-cols-md-'+length);
+			/* 수량 value 기본값 설정 */
+			document.getElementById('result').value = 1;
 		} 
 		
 		
