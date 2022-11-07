@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,8 +31,8 @@ public class Photobook {
 	@SequenceGenerator(name = "mySequenceGenerator", sequenceName = "photobook_seq", allocationSize = 1)
 	private int photobook_num;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "Theme_num")
+	@OneToOne
+	@JoinColumn(name = "Theme_num", referencedColumnName = "Theme_num")
 	private ThemeVO theme;
 //	private int thema_num;
 	
@@ -45,7 +46,9 @@ public class Photobook {
 //	}
 	
 	@ManyToOne
-	@JoinColumn(name="user_num")
+//	@JoinColumn(name="user_num")
+//	@JoinColumn(foreignKey = @ForeignKey(name = "FK_userInfo_to_userNum"))
+	@JoinColumn(name="user_num", referencedColumnName = "user_num")
 	private Userinfo userinfo;
 //	private int user_num;
 	

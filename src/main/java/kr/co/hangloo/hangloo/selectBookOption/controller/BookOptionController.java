@@ -48,7 +48,7 @@ public class BookOptionController {
 		photobook.setTheme(theme);
 		photobook.setUserinfo(userinfo);
 		
-//		System.out.println(theme.getThemeMainImg());
+		System.out.println(theme.getThemeMainImg());
 //		System.out.println(theme.getThemeName());
 //		System.out.println(theme.gettheme_price());
 //		System.out.println(theme.gettheme_sub_img());
