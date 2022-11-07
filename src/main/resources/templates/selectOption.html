@@ -94,8 +94,13 @@
 			<form action="/SelectBookOption" method="post" name="selectOptionForm" onsubmit="checkForm(); return false;">
 				<div>
 					<p>테&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;마&nbsp;</p>
-					<input type="radio" class="btn-check" id="thema_num" autocomplete="off" value="1" name="thema_num" checked>
-					<label id="tName" class="btn btn-outline-primary" for="thema_num">귀여운테마</label>
+
+
+					<input type="radio" class="btn-check" id="themeNum" autocomplete="off" value="1" name="themeNum" checked>
+					<label id="tName" class="btn btn-outline-primary" for="themeNum">귀여운테마</label>
+					<!-- <input type="radio" class="btn-check" id="theme_num2" autocomplete="off" value="2" name="theme_num" >
+					<label class="btn btn-outline-primary" for="theme_num2">귀여운테마2</label> -->
+
 					<br><br>
 				</div>
 				<p class="display-block-p">사&nbsp;이&nbsp;즈&nbsp;</p>
@@ -204,12 +209,12 @@
 		<div id="themeWrap">
 			<div id="theme">
 				<div id="themeList" class="row row-cols-1 row-cols-md-4 g-4">
-				  <div class="col" th:each="thema, stat:${thema}">
-				  	<a class="class" href="javascript:void(0);" onclick="themeChange(this.className);" th:class="${thema.thema_num}">
+				  <div class="col" th:each="theme, stat:${theme}">
+				  	<a class="class" href="javascript:void(0);" onclick="themeChange(this.className);" th:class="${theme.themeNum}">
 					    <div class="card h-100">
-					      <img src="/img/예(1).jpg" th:src="|/img/${thema.thema_main_img}.jpg|" class="card-img-top" alt="...">
+					      <img src="/img/예(1).jpg" th:src="|/img/${theme.themeMainImg}|" class="card-img-top" alt="...">
 					      <div class="card-body">
-					        <h5 class="card-title" th:text="${thema.thema_name}">귀여운테마</h5>
+					        <h5 class="card-title" th:text="${theme.themeName}">귀여운테마</h5>
 					      </div>
 					    </div>
 				    </a>
@@ -287,8 +292,8 @@
 	</script>
 	<script th:inline="javascript">
 	/* 테마 수에 따라 id themeList의 클래스 숫자 교체해서 모양바꿔주기(5개 이상되면 새롭게 만들어줘야 할듯) */
-		let thema = [[${thema}]];
-		let length = thema.length;
+		let theme = [[${theme}]];
+		let length = theme.length;
 		
 		let themeList = document.getElementById('themeList');
 		
@@ -303,22 +308,22 @@
 		
 		/* 테마리스트 클릭하면 테마 value값 바꾸기 */
 		function themeChange(clicked_class){
-			let themeNum = document.getElementById('thema_num');
+			let themeNum = document.getElementById('theme_num');
 			let themeValue = themeNum.value;
 			let themeName = document.getElementById('tName');
 			
 			for(let i= 0; i< length; i++){
-				if( clicked_class == thema[i].thema_num ){
+				if( clicked_class == theme[i].theme_num ){
 					/* value 값 변경 */
 					themeNum.value = i+1;
 					/* 테마이름 변경 */
-					themeName.innerText = thema[i].thema_name;
+					themeName.innerText = theme[i].theme_name;
 				}
 			}
 			
 			/* 테마리스트 클릭하면 테마이름 변경 */
 			console.log(themeValue);
-			console.log(thema[0].thema_num);
+			console.log(theme[0].theme_num);
 			
 			console.log(clicked_class);
 			

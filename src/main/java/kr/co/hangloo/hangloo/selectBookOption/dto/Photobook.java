@@ -3,8 +3,10 @@ package kr.co.hangloo.hangloo.selectBookOption.dto;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,11 +14,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+
+import kr.co.hangloo.hangloo.theme.ThemeVO;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity @Getter @Setter
+@Table(name = "Photobook")
 public class Photobook {
 	
 	@Id
@@ -25,8 +32,8 @@ public class Photobook {
 	private int photobook_num;
 	
 	@OneToOne
-	@JoinColumn(name = "thema_num")
-	private Thema thema;
+	@JoinColumn(name = "Theme_num", referencedColumnName = "Theme_num")
+	private ThemeVO theme;
 //	private int thema_num;
 	
 	// 테마바꾸기
@@ -39,7 +46,9 @@ public class Photobook {
 //	}
 	
 	@ManyToOne
-	@JoinColumn(name="user_num")
+//	@JoinColumn(name="user_num")
+//	@JoinColumn(foreignKey = @ForeignKey(name = "FK_userInfo_to_userNum"))
+	@JoinColumn(name="user_num", referencedColumnName = "user_num")
 	private Userinfo userinfo;
 //	private int user_num;
 	

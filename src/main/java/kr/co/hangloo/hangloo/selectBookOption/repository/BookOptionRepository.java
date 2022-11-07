@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.co.hangloo.hangloo.selectBookOption.dto.Photobook;
 import kr.co.hangloo.hangloo.selectBookOption.dto.Thema;
+import kr.co.hangloo.hangloo.theme.ThemeVO;
 
 public interface BookOptionRepository {
 	
@@ -11,7 +12,7 @@ public interface BookOptionRepository {
 	Photobook save(Photobook photobook);
 	
 	// 테마 전체 조회
-	List<Thema> themaList();
+	List<ThemeVO> themeList();
 	 
 	
 	
