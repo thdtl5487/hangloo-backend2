@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+		img{
+			width: 100px;
+			height: 100px;
+		}
+
+	</style>
+<body>
+	
+	<div class="container">
+		<div class="main-wrapper">
+			<table class="table-info-body">
+				<tr>
+					<td>테마고유번호</td>
+					<td>테마이름</td>
+					<td>메인이미지</td>
+					<td>서브이미지</td>
+					<td>가격</td>
+					<td>수정</td>
+					<td>삭제</td>
+				</tr>
+				
+				<tr th:each="theme, Loop : ${themeList}">
+					<td class="theme-num-text" th:text="${theme.themeNum}"></td>
+					<td th:text="${theme.themeName}"></td>
+					<td><img class="main-img" src="" alt="테마번호들어가는곳"></td>
+					<td><img class="sub-img" src="" alt="테마번호들어가는곳"></td>
+					<td th:text="${theme.themePrice}"></td>
+					<td><button class="modify-btn" th:attr="data-el_id=${theme.themeNum}">수정</button></td>
+					<td><button class="remove-btn" th:attr="data-el_id=${theme.themeNum}">삭제</button></td>
+				</tr>
+			</table>
+		</div>
+		<button><a href="/admin/theme">업로드로 이동</a></button>
+	</div>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script>
+	// 삭제버튼 기능 스크립트
+	$(document).ready(function(){
+		$(".remove-btn").on("click", function(){
+			console.log("삭제 버튼 눌렀음");
+			console.log(this.getAttribute("data-el_id"));
+			var themeId = this.getAttribute("data-el_id");
+			
+			$.ajax({
+				url:'/admin/removeTheme',
+				type:'POST',
+				data:{
+					themeNum: themeId
+				},
+				success:function(data){
+					alert("테마가 삭제되었습니다.");
+					location.reload();
+				}
+			})
+		})
+	})
+	</script>
+	
+	
+	<script>
+		// 메인/서브 이미지를 출력하기 위한 스크립트
+		var themeNumList = document.querySelectorAll(".theme-num-text");
+		var mainImgEle = document.querySelectorAll(".main-img");
+		var subImgEle = document.querySelectorAll(".sub-img");
+		
+		for(var i = 0; i<=themeNumList.length; i++){
+			mainImgEle[i].setAttribute("src", "http://localhost:9091/getThemeImg/" + themeNumList[i].innerText);
+			subImgEle[i].setAttribute("src", "http://localhost:9091/getThemeSubImg/" + themeNumList[i].innerText);
+		}
+	</script>
+
+	
+	
+</body>
+</html>
