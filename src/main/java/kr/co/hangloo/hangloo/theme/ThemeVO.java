@@ -17,7 +17,7 @@ import lombok.Setter;
 public class ThemeVO {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name= "theme_num")
 	private Integer themeNum;
 	
