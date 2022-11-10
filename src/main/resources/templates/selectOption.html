@@ -121,7 +121,7 @@
 
 
 					<input type="radio" class="btn-check" id="themeNum" autocomplete="off" value="1" name="themeNum" checked>
-					<label id="tName" class="btn btn-outline-primary" for="themeNum">귀여운테마</label>
+					<label id="themeName" class="btn btn-outline-primary" for="themeNum">귀여운테마</label>
 					<!-- <input type="radio" class="btn-check" id="theme_num2" autocomplete="off" value="2" name="theme_num" >
 					<label class="btn btn-outline-primary" for="theme_num2">귀여운테마2</label> -->
 
@@ -447,7 +447,7 @@
 		function themeChange(clicked_class){
 			let themeNum = document.getElementById('themeNum');
 			let themeValue = themeNum.value;
-			let themeName = document.getElementById('tName');
+			let themeName = document.getElementById('themeName');
 			
 			let price = document.querySelector(".totalPrice");
 			let total = document.querySelector(".totalPrice").innerText;
@@ -470,6 +470,7 @@
 					themeNum.value = i+1;
 					/* 테마이름 변경 */
 					themeName.innerText = theme[i].themeName;
+
 					/* 예상가격부분 선택테마 가격 + 배송비로 변경 */
 					price.innerText = theme[i].themePrice + delNum;
 					/* 사진변경 */
@@ -477,6 +478,19 @@
 					
 				}
 			}
+
+				}
+			}
+			
+			/* 테마리스트 클릭하면 테마이름 변경 */
+			console.log(themeValue);
+			console.log(theme[0].themeNum);
+			
+			console.log(clicked_class);
+			
+			
+			
+
 		}
 		
 		
