@@ -23,11 +23,10 @@
 	/* 유저아이디 안보이게 하기 */
 	#userNumInput {display: none; }
 	
+	/* submit버튼 */
 	div.nextBtnWrap {position: relative;}
 	button.nextBtn {position: absolute; top: 20px; right: 10px; background: #EC6757; border-color: #EC6757;  }
-	#themeWrap::before { content: ''; width:80%; border-bottom: 1px solid #f0f0f0; display: block; margin: 0 auto; }
-	#themeWrap {position: absolute; top:950px; left: 0; padding:0 50px;}
-	#theme { padding-top:100px; }
+	
 	
 	.btn-primary { --bs-btn-active-bg: #EC6757; --bs-btn-active-border-color: #EC6757; }
 	.btn-outline-primary { color : #EC6757; border-color: #EC6757; --bs-btn-color: #EC6757; --bs-btn-border-color: #EC6757;}
@@ -65,10 +64,26 @@
 	.tipImgCoting { left: 295px; }
 	.tipImgCase { top: -4px; left: 294px; }
 	.imgCover:hover + .tipImgCover, .imgCoting:hover+.tipImgCoting, .imgInside:hover+.tipImgInside, .imgCase:hover+.tipImgCase{ display: block; }
-	 
+
+	/* 테마리스트 */	 
+	#themeWrap::before { content: ''; width:80%; border-bottom: 1px solid #f0f0f0; display: block; margin: 0 auto; }
+	#themeWrap {position: absolute; top:950px; left: 0; padding:0 50px;}
+	#theme { padding-top:100px; }
+	
 	/* test */
+	.slide_wrap {}
+	.slide_show { width: 900px; height: 200px; overflow: hidden; position: absolute; left: 0; top: 0; right: 0; bottom: 0; margin: auto;}
+	.slide_show .slide_list{ position: relative; overflow:hidden; width: 3300px; height: 360px;}
+	.slide_show .slide_list > div{ float: left; width: 290px; padding: 5px; height: 174px; box-sizing: content-box; position: relative;}
+	.slide_show .slide_list > div:before { position: absolute; left: 10px; top: 10px; color: #fff; }
 	
 	
+	
+	.slide_show .slide_list > div img {width: 100%;}
+	
+	.slide_btn {position: absolute; bottom: 5%; left: 50%; transform: translatex(-50%);}
+	.slide_btn button { background: rgba(0,0,0,.4); border: 1px solid rgba(255,255,255,0.4); color: #fff; border-radius: 50%; width: 40px; height: 40px; cursor: pointer;}
+	.slide_btn button:hover { background: rgba(0,0,0,.8);}
 	
 </style>
 <body>
@@ -78,21 +93,21 @@
 		<!-- 예시사진영역 -->
 		<div id="picWrap">
 		   <div id="pic">
-			<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+			<div id="carouselExampleFade" class="carousel carousel-fade" data-bs-ride="carousel">
 			  <div class="carousel-inner">
 			    <div class="carousel-item active">
 			      <img src="/img/예(1).jpg" class="d-block w-100 showImg" alt="...">
 			    </div>
 			    
 			  </div>
-			   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+			<!--    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
 			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 			    <span class="visually-hidden">Previous</span>
 			  </button>
 			  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
 			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
 			    <span class="visually-hidden">Next</span>
-			  </button>
+			  </button> -->
 			 </div>
 		  </div>
 		</div>
@@ -233,7 +248,28 @@
 		<!-- 테마선택 영역 -->
 		<div id="themeWrap">
 			<div id="theme">
-				<div id="themeList" class="row row-cols-1 row-cols-md-5 g-4">
+	<!-- test -->
+				<div class="slide_wrap">
+				  <div class="slide_show">
+				    <div class="slide_list" >
+				      <div class="slide" th:each="theme, stat:${theme}">
+				      	<a class="class" href="javascript:void(0);" onclick="themeChange(this.className);" th:class="${theme.themeNum}">
+				      		<img src="/img/예(1).jpg" alt="이미지" th:src="|/img/${theme.themeMainImg}|">
+				      		<h5 th:text="${theme.themeName}">귀여운테마</h5>
+				      	</a>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="slide_btn">
+				    <button class="prev">prev</button>
+				    <button class="next">next</button>
+				  </div>
+				</div>
+				
+				
+				
+				
+				<!-- <div id="themeList" class="row row-cols-1 row-cols-md-5 g-4">
 				
 				  <div class="col" th:each="theme, stat:${theme}">
 				  	<a class="class" href="javascript:void(0);" onclick="themeChange(this.className);" th:class="${theme.themeNum}">
@@ -244,10 +280,16 @@
 					      </div>
 					    </div>
 				    </a>
-					
 				  </div>
 				  
 				</div>
+				<div class="theme-btn">
+					<button class="prev">prev</button>
+					<button class="next">next</button>
+				</div> -->
+				
+				
+				
 				
 			</div>
 		</div>
@@ -258,7 +300,52 @@
 
 	<script th:inline="javascript">
 	/* test */
+	let slideWrap = $(".slide_wrap"),
+    slideShow = slideWrap.find(".slide_show"),
+    slideList = slideShow.find(".slide_list"),
+    slides = slideList.find(".slide"),
+    slideBtn = slideWrap.find(".slide_btn");
+
+	let slideCount = slides.length,
+	    slideWidth = slides.innerWidth(),
+	    showNum = 3,
+	    num = 0,
+	    currentIndex = 0,
+	    
+	    slideCopy = $(".slide:lt("+ showNum +")").clone();
+	    slideList.append(slideCopy);
 	
+	//이미지 움직이기
+	function backShow(){
+	  if( num == 0 ){
+	    //시작
+	    num= slideCount;
+	    slideList.css("left", -num * slideWidth + "px");
+	  }
+	  num--;
+	  slideList.stop().animate({ left : -slideWidth * num +"px"}, 400);
+	}
+	
+	function nextShow(){
+	  if( num == slideCount ){
+	    //마지막
+	    num= 0;
+	    slideList.css("left", num);
+	  }
+	  num++;
+	  slideList.stop().animate({ left : -slideWidth * num +"px"}, 400);
+	}
+	
+	//왼쪽, 오른쪽 버튼 설정
+	slideBtn.on("click","button",function(){
+	  if( $(this).hasClass("prev")){
+	    //왼쪽 버튼을 클릭
+	    backShow();
+	  } else {
+	    //오른쪽 버튼을 클릭
+	    nextShow();
+	  }
+	});
 	
 	
 	
@@ -341,7 +428,7 @@
 		window.onload = function(){
 			/* themeList.classList.remove("row-cols-md-4");
 			themeList.classList.add("row-cols-md-"+length); */
-			themeList.classList.replace('row-cols-md-5','row-cols-md-'+length);
+			/* themeList.classList.replace('row-cols-md-5','row-cols-md-'+length); */
 			console.log(length);
 			/* 수량 value 기본값 설정 */
 			/* document.getElementById('result').value = 1; */
