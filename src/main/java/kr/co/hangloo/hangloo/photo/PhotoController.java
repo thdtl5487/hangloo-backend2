@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import kr.co.hangloo.hangloo.selectBookOption.dto.Photobook;
+import kr.co.hangloo.hangloo.selectBookOption.dto.Userinfo;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -28,8 +30,10 @@ public class PhotoController {
 		
 		System.out.println(jsonData.get("pickNotePhoto"));
 		
-		
-		
+	}
+	
+	@PostMapping(value="/getPictoPidfromPhotobook")
+	public @ResponseBody void getPicToPidFromPhotobook(Userinfo user, Photobook photobook, Integer pid) {
 		
 	}
 	

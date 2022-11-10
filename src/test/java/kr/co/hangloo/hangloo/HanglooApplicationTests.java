@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import kr.co.hangloo.hangloo.thema.ThemaRepository;
-import kr.co.hangloo.hangloo.thema.ThemaVO;
+//import kr.co.hangloo.hangloo.thema.ThemaRepository;
+//import kr.co.hangloo.hangloo.thema.ThemaVO;
 import kr.co.hangloo.hangloo.theme.ThemeRepository;
 import kr.co.hangloo.hangloo.theme.ThemeVO;
 
