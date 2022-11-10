@@ -299,6 +299,9 @@
 	</main>
 
 	<script th:inline="javascript">
+	
+	console.log("zzzzzzz");
+	
 	/* test */
 	let slideWrap = $(".slide_wrap"),
     slideShow = slideWrap.find(".slide_show"),
@@ -475,9 +478,7 @@
 					price.innerText = theme[i].themePrice + delNum;
 					/* 사진변경 */
 					showImg.setAttribute('src', '/img/' + theme[i].themeMainImg );
-					
-				}
-			}
+
 
 				}
 			}
