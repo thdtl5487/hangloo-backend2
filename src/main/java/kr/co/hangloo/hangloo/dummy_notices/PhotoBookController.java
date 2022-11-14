@@ -8,6 +8,7 @@ import java.util.Map;
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/photobookServer")
 public class PhotoBookController {
 	
 	@PostMapping(value = "/sendPhotoAlbumInfo")
@@ -33,7 +35,7 @@ public class PhotoBookController {
 		
 		String testStr = req.get(req.size()-1).get("data").toString(); 
 		
-		
+		 
 		getJsonValueFromStringJsonArray(testStr, "aaa");
 		getJsonValueFromStringJsonArray(testStr, "bbb");
 		getJsonValueFromStringJsonArray(testStr, "ccc");

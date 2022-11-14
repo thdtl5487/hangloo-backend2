@@ -77,8 +77,8 @@
 		var subImgEle = document.querySelectorAll(".sub-img");
 		
 		for(var i = 0; i<=themeNumList.length; i++){
-			mainImgEle[i].setAttribute("src", "http://localhost:9091/getThemeImg/" + themeNumList[i].innerText);
-			subImgEle[i].setAttribute("src", "http://localhost:9091/getThemeSubImg/" + themeNumList[i].innerText);
+			mainImgEle[i].setAttribute("src", "http://localhost:9091/photobookServer/getThemeImg/" + themeNumList[i].innerText);
+			subImgEle[i].setAttribute("src", "http://localhost:9091/photobookServer/getThemeSubImg/" + themeNumList[i].innerText);
 		}
 	</script>
 

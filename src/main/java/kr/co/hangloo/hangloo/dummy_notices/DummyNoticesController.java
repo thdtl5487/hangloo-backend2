@@ -19,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/photobookServer")
 public class DummyNoticesController {
 	
 	@Autowired
