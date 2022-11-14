@@ -12,12 +12,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 
+import kr.co.hangloo.hangloo.makeDetail.dto.Monthcover;
 import kr.co.hangloo.hangloo.theme.ThemeVO;
 import lombok.Getter;
 import lombok.Setter;
@@ -51,6 +53,9 @@ public class Photobook {
 	@JoinColumn(name="user_num", referencedColumnName = "user_num")
 	private Userinfo userinfo;
 //	private int user_num;
+	
+	@OneToMany(mappedBy = "photobook")
+	private List<Monthcover> monthcover = new ArrayList<>();
 	
 	private String photobook_size;
 	private String photobook_cover;

@@ -115,7 +115,7 @@
 		<!-- form태그 영역 -->
 		<div id="formWrap">
 		
-			<form action="/SelectBookOption" method="post" name="selectOptionForm" onsubmit="checkForm(); return false;">
+			<form action="/photobookServer/SelectBookOption" method="post" name="selectOptionForm" onsubmit="checkForm(); return false;">
 				<div>
 					<p>테&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;마&nbsp;</p>
 
@@ -478,6 +478,11 @@
 					price.innerText = theme[i].themePrice + delNum;
 					/* 사진변경 */
 					showImg.setAttribute('src', '/img/' + theme[i].themeMainImg );
+
+					
+			
+
+
 
 
 				}

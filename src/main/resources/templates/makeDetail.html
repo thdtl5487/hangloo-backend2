@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"><!-- 타임리프 -->
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+	/* 날짜 */
+	.display-none {display: none; }
+	.date-input { width: 100%; height: 32px; font-size: 15px; border: 0; border-radius: 15px; outline: none; margin: 0 auto;
+  				  background-color: #FFD0D0; text-align: center; }
+  	
+  	/* 대표사진선택 */
+  	.pic-selector { margin : 10px 0;  }
+	.pic-selector input { margin: 0; padding: 0; -webkit-appearance: none; -moz-appearance:none; appearance:none; }
+	.ex-pic1 { background-image:url("/img/예(1).jpg"); }
+	.ex-pic2 { background-image:url("/img/예(2).jpg"); }
+	
+	/* .pic-selector input:active +.picture-select { opacity: .5; } */
+	.pic-selector input:checked +.picture-select { -webkit-filter: none; -moz-filter: none; filter: none; }
+	.picture-select { cursor:pointer; background-size:contain; background-repeat:no-repeat; display:inline-block;
+					    width:90px; height: 70px;
+					    -webkit-transition: all 100ms ease-in;
+					       -moz-transition: all 100ms ease-in;
+					            transition: all 100ms ease-in;
+					    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+	      				-moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+	            		filter: brightness(1.2) grayscale(.5) opacity(.9);
+					}
+	.picture-select:hover { -webkit-filter: none; -moz-filter: none; filter: none; }
+	
+	/* 버튼 */
+	.selectBtnWrap { width: 100%; position: relative; }
+	.selectBtn { width: 100px; height:38px; position: absolute; top:5px; right: 2%; background-color: #EC6757; color: #fff; border: 1px solid #EC6757;
+				 border-radius: 5px; }
+	.selectBtn:hover { background-color: #FFD0D0; color: #000; border-color: #FFD0D0; cursor:pointer; }
+</style>
+<body>
+	
+	
+	<form action="/photobookServer/makeDetail" method="post" name="makeDetailForm">
+	<p class="display-none">날짜</p>
+	<input class="date-input" type="text" name="month_cover_date" th:value="${param.date}">
+	<div class="pic-selector">
+		<input type="radio" name="month_cover_url" id="pic1" value="url1" checked>
+  		<label class="picture-select ex-pic1" for="pic1"></label>
+		<input type="radio" name="month_cover_url" id="pic2" value="url2">
+  		<label class="picture-select ex-pic2" for="pic2"></label>
+	</div>
+	<div class="display-none">
+		포토북 번호
+		<input type="text" name="photobook_num" th:value="${param.photobook}">
+	</div>
+	<div class="selectBtnWrap">
+		<button class="selectBtn" type="submit">선택완료</button>
+	</div>
+	</form>
+	
+	
+	
+	
+	
+	<script type="text/javascript">
+		
+	
+	
+		
+	
+	
+	</script>
+	
+	
+</body>
+</html>
