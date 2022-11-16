@@ -44,4 +44,12 @@ public class DummyNoticesController {
 		
 		return service.getPhoto(getNum);
 	}
+	
+	@PostMapping("/makeCoverTest")
+	public void makeCoverTest(@RequestBody HashMap<String, Object> req) {
+		
+		System.out.println("받은 아이템 1 : "+req.get("cover_img"));
+		System.out.println("받은 아이템 2 : "+req.get("fileImage"));
+		System.out.println("받은 아이템 3 : "+req.get("photobook_num"));
+	}
 }
