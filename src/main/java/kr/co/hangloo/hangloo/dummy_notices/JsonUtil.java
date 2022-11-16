@@ -1,5 +1,4 @@
 package kr.co.hangloo.hangloo.dummy_notices;
-package kr.co.hangloo.hangloo.dummy_notices;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
