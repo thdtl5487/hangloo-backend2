@@ -29,7 +29,13 @@ class HanglooApplicationTests {
 		for(int i = 0; i<voList.size(); i++) {
 			System.out.println("list : " + voList.get(i));
 			System.out.println(i + "번째 데이터 : ");
+<<<<<<< HEAD
 			System.out.println(voList.get(i).getThemeMainImg());
+=======
+//			System.out.println(voList.get(i).getTheme_main_img());
+			System.out.println(voList.get(i).getThemeMainImg());
+//			System.out.println(voList.get(i).getTheme_name());
+>>>>>>> main
 			System.out.println(voList.get(i).getThemeName());
 			System.out.println("---------------------------");
 		}
@@ -41,6 +47,10 @@ class HanglooApplicationTests {
 		Optional<ThemeVO> oVO = this.themeRepo.findById(1);
 		ThemeVO vo = oVO.get();
 		
+<<<<<<< HEAD
+=======
+//		System.out.println(vo.getTheme_main_img());
+>>>>>>> main
 		System.out.println(vo.getThemeMainImg());
 		
 		

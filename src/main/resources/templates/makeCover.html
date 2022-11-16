@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+	body { margin: 0 auto;  }
+	h3 { text-align: center; }
+</style>
+<body>
+	<h3>STEP 5. 앨범 표지를 만들어 주세요.</h3>
+	<form method="post" action="/photobookServer/MakeCover" enctype="multipart/form-data">
+		<input type="file" accept="" required name="file">
+		제목 : <input type="text" name="cover_title">
+		포토북 번호 : <input type="text" name="photobook_num">
+		<div>
+			<button type="submit">다음</button>
+		</div>
+	</form>
+	
+</body>
+</html>
