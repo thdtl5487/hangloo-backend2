@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.hangloo.hangloo.makeCover.dto.Cover;
@@ -18,7 +20,7 @@ import kr.co.hangloo.hangloo.makeCover.service.MakeCoverService;
 import kr.co.hangloo.hangloo.makeDetail.controller.MakeDetailController;
 import kr.co.hangloo.hangloo.selectBookOption.dto.Photobook;
 
-@Controller
+@RestController
 @RequestMapping("/photobookServer")
 public class makeCoverController {
 	
@@ -38,19 +40,17 @@ public class makeCoverController {
 	
 	// 파일저장
 	@PostMapping("MakeCover")
-	public String upload(Cover cover, Photobook photobook, @RequestParam MultipartFile file) throws IllegalStateException, IOException {
+	public void upload(Cover cover, Photobook photobook, @RequestPart(name="file", required = false) MultipartFile file) throws IllegalStateException, IOException {
 		
-		
+		System.out.println("cover : " + cover.getCover_title());
+		System.out.println("photobook : " + photobook.getPhotobook_num());
+		System.out.println("file name : " + file.getName());
 		// 서비스로 넘겨주기
 		makeCoverService.coverSave(cover, photobook, file);
 		
 		
-		return "next";
+		
 	}
-	
-	
-	
-	
 	
 	
 }
