@@ -28,10 +28,12 @@ public class BookOptionService {
 	}
 	
 	// 사용자 선택값 저장	
-	public int option(Photobook photobook) {
+	public Integer option(Photobook photobook) {
 
+		System.out.println("이거 실행은했니???");
 		// 레파지토리에 저장
 		bookOptionRepository.save(photobook);
+		System.out.println("save실행했니????");
 		return photobook.getPhotobook_num();
 	}
 	// 테마리스트 받아오기

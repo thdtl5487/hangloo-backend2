@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.hangloo.hangloo.selectBookOption.dto.Photobook;
 
@@ -18,7 +19,7 @@ import kr.co.hangloo.hangloo.selectBookOption.service.BookOptionService;
 import kr.co.hangloo.hangloo.theme.ThemeRepository;
 import kr.co.hangloo.hangloo.theme.ThemeVO;
 
-@Controller
+@RestController
 @RequestMapping("/photobookServer")
 public class BookOptionController {
 	
@@ -45,19 +46,19 @@ public class BookOptionController {
 	
 	//데이터 저장
 	@PostMapping("SelectBookOption")
-	public String selectBookOptionCreate(Photobook photobook, ThemeVO theme, Userinfo userinfo) {
+	public void selectBookOptionCreate(Photobook photobook, ThemeVO theme, Userinfo userinfo) {
 		//넘어온 테마번호와 유저번호 포토북테이블에 셋팅
 		photobook.setTheme(theme);
 		photobook.setUserinfo(userinfo);
 		
-		System.out.println(theme.getThemeMainImg());
+		System.out.println("selectBookOption 데이터1 : "+theme.getThemeNum());
+		System.out.println("selectBookOption 데이터2 : "+photobook.getPhotobook_size());
+		System.out.println("selectBookOption 데이터3 : "+userinfo.getUser_num());
 //		System.out.println(theme.getThemeName());
 //		System.out.println(theme.gettheme_price());
 //		System.out.println(theme.gettheme_sub_img());
 		// 서비스단으로 넘겨주기
 		bookOptionService.option(photobook);
 	
-		
-		return "next";
 	}
 }

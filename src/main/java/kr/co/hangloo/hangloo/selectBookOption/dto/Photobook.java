@@ -62,7 +62,7 @@ public class Photobook {
 	private String photobook_coting;
 	private String photobook_inside;
 	private String photobook_case;
-	private int photobook_quantity;
-	private int photobook_page;
+	private Integer photobook_quantity;
+	private Integer photobook_page;
 	
 }
