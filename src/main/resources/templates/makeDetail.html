@@ -40,14 +40,14 @@
 	
 	<form action="/photobookServer/makeDetail" method="post" name="makeDetailForm">
 	<p class="display-none">날짜</p>
-	<input class="date-input" type="text" name="month_cover_date" th:value="${param.date}">
+	<input class="date-input" type="text" name="month_cover_date">
 	<div class="pic-selector">
 		<input type="radio" name="month_cover_url" id="pic1" value="url1" checked>
   		<label class="picture-select ex-pic1" for="pic1"></label>
 		<input type="radio" name="month_cover_url" id="pic2" value="url2">
   		<label class="picture-select ex-pic2" for="pic2"></label>
 	</div>
-	<div class="display-none">
+	<div>
 		포토북 번호
 		<input type="text" name="photobook_num" th:value="${param.photobook}">
 	</div>
@@ -62,8 +62,6 @@
 	
 	<script type="text/javascript">
 		
-	
-	
 		
 	
 	

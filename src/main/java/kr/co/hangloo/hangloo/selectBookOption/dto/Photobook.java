@@ -48,8 +48,6 @@ public class Photobook {
 //	}
 	
 	@ManyToOne
-//	@JoinColumn(name="user_num")
-//	@JoinColumn(foreignKey = @ForeignKey(name = "FK_userInfo_to_userNum"))
 	@JoinColumn(name="user_num", referencedColumnName = "user_num")
 	private Userinfo userinfo;
 //	private int user_num;
@@ -57,12 +55,37 @@ public class Photobook {
 	@OneToMany(mappedBy = "photobook")
 	private List<Monthcover> monthcover = new ArrayList<>();
 	
+	@Column(length = 30, nullable = false)
 	private String photobook_size;
+	@Column(length = 30, nullable = false)
 	private String photobook_cover;
+	@Column(length = 30, nullable = false)
 	private String photobook_coting;
+	@Column(length = 30, nullable = false)
 	private String photobook_inside;
+	@Column(length = 30, nullable = false)
 	private String photobook_case;
+	@Column(nullable = false, columnDefinition = "TINYTNT", length = 1)
 	private Integer photobook_quantity;
+	@Column(nullable = false, columnDefinition = "TINYTNT", length = 1)
 	private Integer photobook_page;
+	@Column(nullable = false, columnDefinition = "TINYTNT", length = 1)
+	private Integer notice_comment;
+	@Column(nullable = false, columnDefinition = "TINYTNT", length = 1)
+	private Integer notice_content;
+	@Column(nullable = false, columnDefinition = "TINYTNT", length = 1)
+	private Integer notice_kids_status;
+	@Column(nullable = false, columnDefinition = "TINYTNT", length = 1)
+	private Integer notice_pic_qr;
+	@Column(nullable = false, columnDefinition = "TINYTNT", length = 1)
+	private Integer notice_video_qr;
+	@Column(nullable = false, columnDefinition = "TINYTNT", length = 1)
+	private Integer post_comment;
+	@Column(nullable = false, columnDefinition = "TINYTNT", length = 1)
+	private Integer post_content;
+	@Column(nullable = false, columnDefinition = "TINYTNT", length = 1)
+	private Integer post_pic_qr;
+	@Column(nullable = false, columnDefinition = "TINYTNT", length = 1)
+	private Integer post_video_qr;
 	
 }

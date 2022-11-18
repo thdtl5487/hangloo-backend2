@@ -3,6 +3,7 @@ package kr.co.hangloo.hangloo.selectBookOption.dto;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,6 +27,7 @@ public class Userinfo {
 	@OneToMany(mappedBy = "userinfo")
 	private List<Photobook> photobook = new ArrayList<>();
 	
+	@Column(length = 45, nullable = false)
 	private String user_id;
 	
 }

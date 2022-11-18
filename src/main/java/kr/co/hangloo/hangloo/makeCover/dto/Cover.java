@@ -1,5 +1,6 @@
 package kr.co.hangloo.hangloo.makeCover.dto;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,7 +28,9 @@ public class Cover {
 	private Photobook photobook;
 	// private int photo_num;
 	
+	@Column(length = 100, nullable = false)
 	private String cover_img;
+	@Column(length = 45, nullable = false)
 	private String cover_title;
 	
 	
