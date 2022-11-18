@@ -12,4 +12,7 @@ public interface DummyNoticesRepository extends JpaRepository<DummyNoticesVO, In
 	@Modifying(clearAutomatically = true)
 	@Query("Update DummyNoticesVO n set n.noticeContent=?2 where n.noticeNum = ?1")
 	void updateNoticesContent(Integer nn, String c);
+	
+	
+	void findBynoticeTitle(String title);
 }

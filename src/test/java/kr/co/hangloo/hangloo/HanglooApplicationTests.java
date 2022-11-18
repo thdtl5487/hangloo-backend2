@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import kr.co.hangloo.hangloo.makeDateNotice.MakeDateNoticeRepository;
+import kr.co.hangloo.hangloo.makeDateNotice.MakeDateNoticeVO;
+import kr.co.hangloo.hangloo.selectBookOption.dto.Photobook;
 //import kr.co.hangloo.hangloo.thema.ThemaRepository;
 //import kr.co.hangloo.hangloo.thema.ThemaVO;
 import kr.co.hangloo.hangloo.theme.ThemeRepository;
@@ -18,7 +21,9 @@ class HanglooApplicationTests {
 	@Autowired
 	private ThemeRepository themeRepo;
 	
-	@Test
+	@Autowired
+	private MakeDateNoticeRepository noticeRepo;
+	
 	void selectTest() {
 		
 		List<ThemeVO> voList = this.themeRepo.findAll();
@@ -39,19 +44,48 @@ class HanglooApplicationTests {
 		}
 	}
 	
-	@Test
 	void selectOne() {
 		
 		Optional<ThemeVO> oVO = this.themeRepo.findById(1);
 		ThemeVO vo = oVO.get();
+	}
+	
+//	@Test
+	void noticeInsertTest() {
 		
+<<<<<<< HEAD
 
 
 		System.out.println(vo.getThemeMainImg());
 		
+=======
+		MakeDateNoticeVO noticeVO = new MakeDateNoticeVO();
+		Photobook pbNum = new Photobook();
+		pbNum.setPhotobook_num(99);
+>>>>>>> jayce
 		
+		noticeVO.setNoticeDate("2022-10-12");
+		noticeVO.setNoticeUid(1341);
+		noticeVO.setPhotobook(pbNum);
 		
+		noticeRepo.save(noticeVO);
 		
 	}
 	
+//	@Test
+	void noticeIsDelTest() {
+		noticeRepo.updateNoticeIsDel(13, 1);
+	}
+	
+//	@Test
+	void noticePicPosAll() {
+		Photobook pbNum = new Photobook();
+		pbNum.setPhotobook_num(1003);
+		noticeRepo.updateNoticePicPosAll(pbNum, 1);
+	}
+	
+	@Test
+	void noticePicPosOne() {
+		noticeRepo.updateNoticePicPosOne(15, 0);
+	}
 }
