@@ -65,9 +65,9 @@ public class Photobook {
 	private String photobook_inside;
 	@Column(length = 30, nullable = false)
 	private String photobook_case;
-	@Column(nullable = false, columnDefinition = "TINYTNT", length = 1)
+	@Column(nullable = false)
 	private Integer photobook_quantity;
-	@Column(nullable = false, columnDefinition = "TINYTNT", length = 1)
+	@Column(nullable = false)
 	private Integer photobook_page;
 	@Column(nullable = false, columnDefinition = "TINYTNT", length = 1)
 	private Integer notice_comment;
