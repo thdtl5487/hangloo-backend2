@@ -25,12 +25,6 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Table(name="PICKNOTICE")
-@SequenceGenerator(
-		name ="PICKNOTICE_SEQ_GEN",
-		sequenceName = "NOTICE_SEQ",
-		initialValue = 1,
-		allocationSize = 1
-		)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class PhotobookResponVO {
@@ -38,7 +32,7 @@ public class PhotobookResponVO {
 	@Id
 	@GeneratedValue(
 			strategy = GenerationType.SEQUENCE,
-			generator = "PICKNOTICE_SEQ_GEN"
+			generator = "DUMMY_NOTICE_SEQ"
 			)
 	@Column(name="notice_num")
 	private Integer noticeNum;

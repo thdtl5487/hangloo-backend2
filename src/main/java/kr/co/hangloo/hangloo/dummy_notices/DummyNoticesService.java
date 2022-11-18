@@ -32,6 +32,8 @@ public class DummyNoticesService {
 		
 		List<DummyNoticesVO> result = repo.findAll();
 		
+		
+		
 		return ResponseEntity.ok(result);
 		
 	}
